@@ -1,1 +1,1 @@
-Master degree graduate project
+Master degree graduation work
