@@ -1,0 +1,18 @@
+elasticsearch:
+  image: docker.elastic.co/elasticsearch/elasticsearch:6.7.1
+  container_name: elasticsearch
+  environment:
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  volumes:
+    - esdata-mdgp:/usr/share/elasticsearch/data
+  ports:
+    - "9200:9200"
+kibana:
+  image: docker.elastic.co/kibana/kibana:6.7.1
+  container_name: kibana
+  links:
+    - elasticsearch
+  #volumes:
+  #  - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+  ports:
+    - "5601:5601"
