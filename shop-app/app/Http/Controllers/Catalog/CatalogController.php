@@ -9,7 +9,17 @@
 namespace App\Http\Controllers\Catalog;
 
 
-class CatalogController
-{
+use App\Facades\Elasticsearch;
+use App\Http\Controllers\Controller;
 
+class CatalogController extends Controller
+{
+    public function index()
+    {
+        $return = Elasticsearch::indices()->stats();
+
+        die(json_encode($return));
+
+        return view('catalog');
+    }
 }

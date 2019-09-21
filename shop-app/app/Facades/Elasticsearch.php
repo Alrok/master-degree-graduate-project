@@ -9,7 +9,16 @@
 namespace App\Facades;
 
 
-class Elasticsearch
+use Cviebrock\LaravelElasticsearch\Facade;
+use Elasticsearch\Client;
+
+/**
+ * Class Elasticsearch
+ * @package App\Facades
+ *
+ * @see Client
+ */
+class Elasticsearch extends Facade
 {
 
 }
