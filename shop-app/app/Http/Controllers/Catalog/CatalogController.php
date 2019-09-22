@@ -18,8 +18,6 @@ class CatalogController extends Controller
     {
         $return = Elasticsearch::indices()->stats();
 
-        die(json_encode($return));
-
         return view('catalog');
     }
 }
