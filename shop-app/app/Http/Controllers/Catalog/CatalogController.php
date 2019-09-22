@@ -16,8 +16,15 @@ class CatalogController extends Controller
 {
     public function index()
     {
-        $return = Elasticsearch::indices()->stats();
+        $return = Elasticsearch::search(['index' => 'products']);
 
-        return view('catalog');
+        $products = [];
+
+        foreach ($return['hits']['hits'] ?? [] as $product) {
+            $products[$product['_id']] = $product['_source'];
+            $products[$product['_id']]['_id'] = $product['_id'];
+        }
+
+        return view('catalog', ['products' => $products]);
     }
 }
