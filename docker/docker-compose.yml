@@ -283,25 +283,14 @@ services:
         - frontend
         - backend
 
-### IPython #########################################
-    ipython-controller:
-      build:
-        context: ipython
-        dockerfile: Dockerfile.controller
-      networks:
-        - backend
-      extra_hosts:
-        - "laradock-ipython:${LARADOCK_IPYTHON_CONTROLLER_IP}"
+### Kibana ##############################################
+    computing-service:
+      build: ../../computing-service
       ports:
-        - "33327-33338:33327-33338"
-    ipython-engine:
-      build:
-        context: ipython
-        dockerfile: Dockerfile.engine
+        - "5000:5000"
       networks:
+        - frontend
         - backend
-      extra_hosts:
-        - "laradock-ipython:${LARADOCK_IPYTHON_CONTROLLER_IP}"
 
 ### Docker-in-Docker ################################################
     docker-in-docker:

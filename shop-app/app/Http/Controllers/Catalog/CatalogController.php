@@ -11,11 +11,17 @@ namespace App\Http\Controllers\Catalog;
 
 use App\Facades\Elasticsearch;
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
 
 class CatalogController extends Controller
 {
     public function index()
     {
+        $client = new Client();
+        $res = $client->request('GET',env('COMPUTING_SERVICE_URL'));
+        $json = json_decode($res->getBody()->getContents(), true);
+
+
         $return = Elasticsearch::search(['index' => 'products']);
 
         $products = [];
