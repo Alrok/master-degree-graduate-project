@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('My shop'))
+
 @section('content')
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
@@ -9,9 +11,9 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="single-shop-product">
                             <div class="product-upper">
-                                <img src="{{$product['image']}}" alt="{{$product['name']}}">
+                                <img style="max-height: 220px" src="{{$product['image']}}" alt="{{$product['name']}}">
                             </div>
-                            <h2><a href="">{{$product['name']}}</a></h2>
+                            <h2><a href="{{$product['url']}}">{{$product['name']}}</a></h2>
                             <div class="product-carousel-price">
                                 <ins>{{$product['offers']['price']}} {{$product['offers']['priceCurrency']}}</ins>
                                 {{--<del>$999.00</del>--}}
@@ -23,6 +25,24 @@
                         </div>
                     </div>
                 @endforeach
+                    @foreach($products as $product)
+                        <div class="col-md-3 col-sm-6">
+                            <div class="single-shop-product">
+                                <div class="product-upper">
+                                    <img style="max-height: 220px" src="{{$product['image']}}" alt="{{$product['name']}}">
+                                </div>
+                                <h2><a href="{{$product['url']}}">{{$product['name']}}</a></h2>
+                                <div class="product-carousel-price">
+                                    <ins>{{$product['offers']['price']}} {{$product['offers']['priceCurrency']}}</ins>
+                                    {{--<del>$999.00</del>--}}
+                                </div>
+
+                                <div class="product-option-shop">
+                                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{$product['url']}}">Go to shop</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
             </div>
 
             <div class="row">
