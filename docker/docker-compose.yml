@@ -288,6 +288,8 @@ services:
       build: ../../computing-service
       ports:
         - "5000:5000"
+      volumes:
+        - ../../computing-service/:/app
       networks:
         - frontend
         - backend
