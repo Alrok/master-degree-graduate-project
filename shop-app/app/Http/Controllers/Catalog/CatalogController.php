@@ -18,7 +18,7 @@ class CatalogController extends Controller
     public function index()
     {
         $client = new Client();
-        $res = $client->request('GET', env('COMPUTING_SERVICE_URL').'/product');
+        $res = $client->request('GET', env('COMPUTING_SERVICE_URL').'/products/search');
         $products = json_decode($res->getBody()->getContents(), true);
 
         return view('catalog', ['products' => $products['items']]);

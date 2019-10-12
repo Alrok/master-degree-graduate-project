@@ -20,7 +20,7 @@
                             </div>
 
                             <div class="product-option-shop">
-                                <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{$product['url']}}">Go to shop</a>
+                                <a class="go_to_shop_button" data-product_id="{{$product['id']}}" rel="nofollow" href="{{$product['url']}}">Go to shop</a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                                 </div>
 
                                 <div class="product-option-shop">
-                                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{$product['url']}}">Go to shop</a>
+                                    <a class="go_to_shop_button" data-product_id="{{$product['id']}}" rel="nofollow" href="{{$product['url']}}">Go to shop</a>
                                 </div>
                             </div>
                         </div>
