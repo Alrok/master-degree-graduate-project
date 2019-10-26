@@ -15,7 +15,7 @@
                             </div>
                             <h2><a href="{{$product['url']}}">{{$product['name']}}</a></h2>
                             <div class="product-carousel-price">
-                                <ins>{{$product['offers']['price']}} {{$product['offers']['priceCurrency']}}</ins>
+                                <ins>{{$product['offers']['price'] ?? 0}} {{$product['offers']['priceCurrency'] ?? 'UAH'}}</ins>
                                 {{--<del>$999.00</del>--}}
                             </div>
 
@@ -25,24 +25,6 @@
                         </div>
                     </div>
                 @endforeach
-                    @foreach($products as $product)
-                        <div class="col-md-3 col-sm-6">
-                            <div class="single-shop-product">
-                                <div class="product-upper">
-                                    <img style="max-height: 220px" src="{{$product['image']}}" alt="{{$product['name']}}">
-                                </div>
-                                <h2><a href="{{$product['url']}}">{{$product['name']}}</a></h2>
-                                <div class="product-carousel-price">
-                                    <ins>{{$product['offers']['price']}} {{$product['offers']['priceCurrency']}}</ins>
-                                    {{--<del>$999.00</del>--}}
-                                </div>
-
-                                <div class="product-option-shop">
-                                    <a class="go_to_shop_button" data-product_id="{{$product['id']}}" rel="nofollow" href="{{$product['url']}}">Go to shop</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
             </div>
 
             <div class="row">

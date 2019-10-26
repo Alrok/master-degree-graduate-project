@@ -12,15 +12,38 @@ namespace App\Http\Controllers\Catalog;
 use App\Facades\Elasticsearch;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Facades\Auth;
 
 class CatalogController extends Controller
 {
     public function index()
     {
-        $client = new Client();
-        $res = $client->request('GET', env('COMPUTING_SERVICE_URL').'/products/search');
+        return view('catalog', ['products' => $this->loadProducts()]);
+    }
+
+    protected function loadProducts()
+    {
+        $client = new Client(['base_uri' => env('COMPUTING_SERVICE_URL')]);
+
+        $query = [
+            'request' => json_encode([
+                'size'=> 100
+            ])
+        ];
+
+        if (Auth::check()) {
+            $query['userId'] = Auth::user()->id;
+        }
+
+        try {
+            $res = $client->request('GET', '/products/search', ['query' => $query]);
+        } catch (GuzzleException $e) {
+            return [];
+        }
+
         $products = json_decode($res->getBody()->getContents(), true);
 
-        return view('catalog', ['products' => $products['items']]);
+        return $products['items'] ?? [];
     }
 }
