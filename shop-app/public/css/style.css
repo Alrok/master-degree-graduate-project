@@ -1121,6 +1121,14 @@ div.cart-collaterals ul.products li.product:hover .go_to_shop_button{background-
 .single-shop-product h2 {
     font-size: 20px;
     margin: 10px 0;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 25px;
+    max-height: 50px;      /* fallback */
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }
 .product-option-shop {
     margin-top: 15px;
