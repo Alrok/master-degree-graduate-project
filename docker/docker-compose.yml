@@ -288,6 +288,7 @@ services:
       build: ../../computing-service
       ports:
         - "5000:5000"
+        - "8888:8888"
       volumes:
         - ../../computing-service/:/app
       networks:
